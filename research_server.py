@@ -193,6 +193,7 @@ def generate_search_prompt(topic: str, num_papers: int = 5) -> str:
 if __name__ == "__main__":
     mcp.run(
         transport="streamable-http",
+        path="/my-custom-http-path",
         #host="0.0.0.0",
         #port=PORT,
     )
