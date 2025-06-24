@@ -7,7 +7,7 @@ from mcp.server.fastmcp import FastMCP
 PAPER_DIR = "papers"
 
 # Initialize FastMCP server
-mcp = FastMCP("research", host=“0.0.0.0”, port=10000)
+mcp = FastMCP("research", host=0.0.0.0, port=10000)
 
 @mcp.tool()
 def search_papers(topic: str, max_results: int = 5) -> List[str]:
@@ -187,10 +187,6 @@ def generate_search_prompt(topic: str, num_papers: int = 5) -> str:
     4. Organize your findings in a clear, structured format with headings and bullet points for easy readability.
     
     Please present both detailed information about each paper and a high-level synthesis of the research landscape in {topic}."""
-
-if __name__ == "__main__":
-    # Initialize and run the server
-    mcp.run(transport='streamable-http')
 
 
 if __name__ == "__main__":
