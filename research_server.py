@@ -6,8 +6,9 @@ from mcp.server.fastmcp import FastMCP
 
 PAPER_DIR = "papers"
 
-# Initialize FastMCP server
-mcp = FastMCP("research", host=0.0.0.0, port=10000)
+PORT = int(os.environ.get("PORT", 10000))
+
+mcp = FastMCP("research")
 
 @mcp.tool()
 def search_papers(topic: str, max_results: int = 5) -> List[str]:
@@ -191,5 +192,7 @@ def generate_search_prompt(topic: str, num_papers: int = 5) -> str:
 
 if __name__ == "__main__":
     mcp.run(
-        transport="http"
+        transport="http",
+        host="0.0.0.0",
+        port=PORT,
     )
