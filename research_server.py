@@ -8,7 +8,7 @@ PAPER_DIR = "papers"
 
 PORT = int(os.environ.get("PORT", 10000))
 
-mcp = FastMCP("research", host="0.0.0.0", port=PORT, path="/my-custom-http-path")
+mcp = FastMCP("research", host="0.0.0.0", port=PORT, stateless_http=True)
 
 @mcp.tool()
 def search_papers(topic: str, max_results: int = 5) -> List[str]:
