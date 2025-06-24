@@ -8,7 +8,7 @@ PAPER_DIR = "papers"
 
 PORT = int(os.environ.get("PORT", 10000))
 
-mcp = FastMCP("research", host="0.0.0.0", port=PORT)
+mcp = FastMCP("research", host="0.0.0.0", port=PORT, path="/my-custom-http-path")
 
 @mcp.tool()
 def search_papers(topic: str, max_results: int = 5) -> List[str]:
@@ -193,7 +193,6 @@ def generate_search_prompt(topic: str, num_papers: int = 5) -> str:
 if __name__ == "__main__":
     mcp.run(
         transport="streamable-http",
-        path="/my-custom-http-path",
         #host="0.0.0.0",
         #port=PORT,
     )
